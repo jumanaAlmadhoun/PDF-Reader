@@ -1,0 +1,9 @@
+<h1>Documents</h1>
+
+<%= link_to "Upload PDF", new_document_path, class: "btn btn-primary" %>
+
+<% @documents.each do |document| %>
+  <div>
+    <h3><%= link_to document.title, document %></h3>
+  </div>
+<% end %>
