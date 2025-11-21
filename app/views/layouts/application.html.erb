@@ -17,7 +17,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="<%= content_for(:body_class) %>">
+    <header class="header">
+      <div class="container">
+        <h1>📚 PDF Reader</h1>
+      </div>
+    </header>
+    
+    <main class="main-content">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>

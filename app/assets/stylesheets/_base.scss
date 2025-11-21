@@ -1,0 +1,42 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: $text-primary;
+  background-color: $bg-secondary;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 $spacing-xl;
+  }
+}
+
+.header {
+  background-color: $bg-primary;
+  box-shadow: $shadow-sm;
+  padding: $spacing-lg 0;
+  margin-bottom: $spacing-2xl;
+
+  h1 {
+    margin: 0;
+    font-size: $font-size-3xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+}
+
+.main-content {
+  min-height: calc(100vh - 200px);
+}
