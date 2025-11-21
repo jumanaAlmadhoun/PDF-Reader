@@ -1,9 +1,28 @@
-<h1>Documents</h1>
+<div class="card">
+  <h1 class="card-title">Your PDF Documents</h1>
+  <p class="card-content">Upload and manage your PDF documents</p>
+  <%= link_to "📄 Upload New PDF", new_document_path, class: "btn btn-primary" %>
+</div>
 
-<%= link_to "Upload PDF", new_document_path, class: "btn btn-primary" %>
-
-<% @documents.each do |document| %>
-  <div>
-    <h3><%= link_to document.title, document %></h3>
+<% if @documents.any? %>
+  <div class="documents-grid">
+    <% @documents.each do |document| %>
+      <%= link_to document, class: "document-card" do %>
+        <h3 class="document-title">
+          <%= document.title %>
+        </h3>
+        <div class="document-meta">
+          <% if document.pdf_file.attached? %>
+            📎 <%= document.pdf_file.filename %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="card">
+    <div class="card-content">
+      <p>No documents uploaded yet. <%= link_to "Upload your first PDF", new_document_path, class: "btn btn-primary" %></p>
+    </div>
   </div>
 <% end %>

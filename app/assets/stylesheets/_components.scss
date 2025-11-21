@@ -1,0 +1,289 @@
+@import "variables";
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-base;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+
+  &.btn-primary {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $bg-primary;
+    color: $text-primary;
+    border: 1px solid $secondary-color;
+
+    &:hover {
+      background-color: $bg-secondary;
+    }
+  }
+}
+
+// Cards
+.card {
+  background-color: $bg-primary;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-xl;
+  margin-bottom: $spacing-lg;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+
+  .card-title {
+    font-size: $font-size-xl;
+    font-weight: 600;
+    margin: 0 0 $spacing-md 0;
+    color: $text-primary;
+  }
+
+  .card-content {
+    color: $text-secondary;
+  }
+}
+
+// Forms
+.form-group {
+  margin-bottom: $spacing-lg;
+
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: $spacing-sm;
+    color: $text-primary;
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $secondary-color;
+    border-radius: $border-radius-md;
+    font-size: $font-size-base;
+    transition: border-color 0.2s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+  }
+}
+
+// Document grid
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+}
+
+.document-card {
+  display: block;
+  background-color: $bg-primary;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-lg;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    text-decoration: none;
+
+    .document-title {
+      color: $primary-color;
+    }
+  }
+
+  .document-title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    margin: 0 0 $spacing-sm 0;
+    color: $text-primary;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .document-meta {
+    font-size: $font-size-sm;
+    color: $text-light;
+  }
+}
+
+// PDF viewer
+.pdf-viewer {
+  background-color: $bg-primary;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-md;
+  margin-top: $spacing-xl;
+
+  iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: $border-radius-md;
+  }
+}
+
+// Fullscreen PDF layout
+.pdf-fullscreen-layout {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  .pdf-sidebar {
+    width: 300px;
+    background-color: $bg-primary;
+    box-shadow: $shadow-md;
+    padding: $spacing-xl;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+
+    .pdf-header {
+      .pdf-title {
+        font-size: $font-size-2xl;
+        font-weight: 700;
+        color: $text-primary;
+        margin: 0 0 $spacing-lg 0;
+        word-wrap: break-word;
+      }
+
+      .pdf-meta {
+        color: $text-secondary;
+        font-size: $font-size-sm;
+        margin-bottom: $spacing-xl;
+      }
+    }
+
+    .pdf-actions {
+      .nav-links {
+        margin-top: 0;
+        flex-direction: column;
+        gap: $spacing-sm;
+
+        a {
+          display: inline-flex;
+          align-items: center;
+          padding: $spacing-sm;
+          border-radius: $border-radius-md;
+          transition: background-color 0.2s ease-in-out;
+
+          &:hover {
+            background-color: $bg-secondary;
+          }
+        }
+      }
+    }
+  }
+
+  .pdf-content {
+    flex: 1;
+    background-color: $bg-secondary;
+    position: relative;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+
+    .pdf-sidebar {
+      width: 100%;
+      height: auto;
+      min-height: 120px;
+
+      .pdf-header {
+        .pdf-title {
+          font-size: $font-size-xl;
+        }
+      }
+    }
+
+    .pdf-content {
+      height: calc(100vh - 120px);
+    }
+  }
+}
+
+// Error messages
+.error-messages {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid $danger-color;
+  border-radius: $border-radius-md;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  p {
+    margin: 0;
+    color: $danger-color;
+    font-size: $font-size-sm;
+  }
+}
+
+// Navigation
+.nav-links {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+
+  a {
+    color: $text-secondary;
+    text-decoration: none;
+    font-size: $font-size-sm;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+// Hide header and main container for fullscreen layout
+.fullscreen-pdf {
+  .header {
+    display: none;
+  }
+
+  .main-content {
+    margin: 0;
+    padding: 0;
+    min-height: auto;
+
+    .container {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
