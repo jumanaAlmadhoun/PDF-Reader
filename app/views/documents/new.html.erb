@@ -1,0 +1,25 @@
+<h1>Upload PDF</h1>
+
+<%= form_with model: @document do |form| %>
+  <% if @document.errors.any? %>
+    <div>
+      <% @document.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :pdf_file %>
+    <%= form.file_field :pdf_file, accept: "application/pdf" %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "Back", documents_path %>

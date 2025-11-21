@@ -23,5 +23,11 @@ module PdfReader
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Use RSpec instead of Test::Unit
+    config.generators do |g|
+      g.test_framework :rspec
+      g.fixture_replacement :factory_bot
+    end
   end
 end
